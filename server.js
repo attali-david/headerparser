@@ -4,14 +4,14 @@ const cors = require('cors')
 require('dotenv').config()
 
 server.use(express.static('public'))
+server.use(cors({optionsSuccessStatus: 200}));
 
 server.get('/', (req, res)=>{
 	res.send()
 })
 
-server.get('/api/:whoami', (req, res)=>{
-	console.log(req.headers)
-	res.json({ipaddress: req.connection.remoteAddress, language: req.headers["accept-language"], software: req.headers["user-agent"]})
+server.get('/api/whoami', (req, res)=>{
+	return res.json({ipaddress: req.connection.remoteAddress, language: req.headers["accept-language"], software: req.headers["user-agent"]})
 })
 
 
